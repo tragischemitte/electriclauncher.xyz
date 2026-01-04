@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Augustus Client</title>
+    <style>
+        :root {
+            /* Color Palette */
+            --bg-primary: #0A0F1D;
+            --bg-secondary: #06080F;
+            --accent-blue: #3B82F6;
+            --accent-cyan: #10b9ab;
+            --accent-purple: #8B5CF6;
+            --text-primary: #F9FAFB;
+            --text-secondary: #94A3B8;
+            --card-bg: rgba(10, 15, 29, 0.5);
+            --border-color: rgba(59, 130, 246, 0.2);
+            --glow-blue: rgba(59, 130, 246, 0.3);
+            --glow-cyan: rgba(16, 185, 171, 0.3);
+            --glow-intense: rgba(59, 130, 246, 0.5);
+
+            /* Typography */
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            --font-mono: 'Courier New', monospace;
+
+            /* Spacing */
+            --navbar-height: 70px;
+            --section-padding: 5rem 2rem;
+
+            /* Transitions */
+            --transition-very-slow: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-slow: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-medium: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition-hover: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+            /* Scroll Offset */
+            --scroll-offset: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--scroll-offset);
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--navbar-height);
+            background: rgba(10, 15, 29, 0.7);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: var(--transition-slow);
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 15, 29, 0.9);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px var(--glow-blue);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition-slow);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo:hover {
+            transform: translateY(-3px);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-slow);
+            box-shadow: 0 0 20px var(--glow-blue);
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(16, 185, 171, 0.8));
+            animation: rotate 15s linear infinite;
+        }
+
+        .logo-icon::after {
+            content: 'A';
+            position: relative;
+            z-index: 2;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo:hover .logo-icon {
+            box-shadow: 0 5px 30px var(--glow-cyan), 0 0 40px var(--glow-blue);
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            transition: var(--transition-slow);
+        }
+
+        .logo:hover .logo-text {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        /* Main Content */
+        .impressum-section {
+            padding: calc(var(--navbar-height) + 4rem) 0 4rem;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(16, 185, 171, 0.15) 0%, transparent 50%),
+                var(--bg-primary);
+            min-height: 100vh;
+        }
+
+        /* Network Animation */
+        .network-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.08;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+        }
+
+        .section-title h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-blue));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientScroll 10s linear infinite;
+            filter: drop-shadow(0 0 25px var(--glow-cyan));
+        }
+
+        @keyframes gradientScroll {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.3s forwards;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        .language-btn {
+            background: rgba(10, 15, 29, 0.5);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--glow-intense) 0%, transparent 70%);
+            transition: var(--transition-slow);
+            transform: translate(-50%, -50%);
+        }
+
+        .language-btn:hover::before {
+            width: 150%;
+            height: 150%;
+        }
+
+        .language-btn:hover,
+        .language-btn.active {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 35px var(--glow-blue), inset 0 0 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .language-content {
+            display: none;
+        }
+
+        .language-content.active {
+            display: block;
+        }
+
+        /* Content Cards */
+        .impressum-card {
+            background: rgba(10, 15, 29, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition-very-slow);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.7s forwards;
+        }
+
+        .impressum-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            transform: scaleX(0);
+            transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        .impressum-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, transparent 30%, var(--glow-blue) 50%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition-very-slow);
+            z-index: -1;
+        }
+
+        .impressum-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            background: rgba(10, 15, 29, 0.8);
+            border-color: var(--accent-blue);
+            box-shadow: 0 25px 80px var(--glow-blue), 0 0 50px var(--glow-cyan);
+        }
+
+        .impressum-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .impressum-card:hover::after {
+            opacity: 0.1;
+        }
+
+        .impressum-card h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition-slow);
+        }
+
+        .impressum-card:hover h2 {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        .impressum-card h2 i {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            transition: var(--transition-slow);
+        }
+
+        .impressum-card:hover h2 i {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 15px var(--glow-cyan));
+        }
+
+        .impressum-card p,
+        .impressum-card li {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            transition: var(--transition-slow);
+        }
+
+        .impressum-card:hover p,
+        .impressum-card:hover li {
+            color: var(--text-primary);
+        }
+
+        .impressum-card strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .impressum-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: var(--transition-slow);
+            position: relative;
+        }
+
+        .impressum-card a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-cyan);
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        .impressum-card a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 15px var(--glow-cyan);
+        }
+
+        .impressum-card a:hover::after {
+            width: 100%;
+        }
+
+        /* AGB Content Scrollable Area */
+        .agb-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .agb-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .agb-content::-webkit-scrollbar-track {
+            background: rgba(10, 15, 29, 0.4);
+            border-radius: 4px;
+        }
+
+        .agb-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        .agb-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+            font-size: 1.25rem;
+            position: relative;
+            padding-left: 20px;
+            transition: var(--transition-slow);
+        }
+
+        .agb-content h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            box-shadow: 0 0 10px var(--glow-cyan);
+            transition: var(--transition-slow);
+        }
+
+        .impressum-card:hover .agb-content h3 {
+            text-shadow: 0 0 15px var(--glow-cyan);
+        }
+
+        .impressum-card:hover .agb-content h3::before {
+            height: 30px;
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 1rem;
+            position: relative;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-cyan), transparent);
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+
+        .footer-content {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: var(--transition-slow);
+        }
+
+        .footer-content:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-slow);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--accent-cyan);
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 15px var(--glow-cyan);
+        }
+
+        .footer-links a:hover::after {
+            width: 120%;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px var(--glow-blue);
+            transition: var(--transition-slow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 40px var(--glow-cyan), 0 0 40px var(--glow-blue);
+        }
+
+        .back-to-top svg {
+            transition: var(--transition-slow);
+        }
+
+        .back-to-top:hover svg {
+            transform: translateY(-3px);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-circle {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-cyan);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+            box-shadow: 0 0 40px var(--glow-cyan), inset 0 0 20px var(--glow-blue);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .impressum-section {
+                padding-top: calc(var(--navbar-height) + 2rem);
+            }
+
+            .section-title h1 {
+                font-size: 2rem;
+            }
+
+            .impressum-card {
+                padding: 1.5rem;
+            }
+
+            .language-toggle {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Augustus Client</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- TOS Section -->
+    <section class="impressum-section">
+        <canvas class="network-animation"></canvas>
+        <div class="container">
+            <div class="section-title">
+                <h1><span class="gradient-text">Terms of Service</span></h1>
+                <p>Information about the general terms and conditions for the Augustus Client</p>
+            </div>
+            
+            <h1>didnt bother fucking this up yet</h1>
+            
+<!--
+            <div class="language-toggle">
+                <button class="language-btn active" data-lang="de">Deutsch</button>
+                <button class="language-btn" data-lang="en">English</button>
+            </div>
+
+            <div class="language-content active" id="content-de">
+                <div class="impressum-card">
+                    <h2><i>⚖️</i> Allgemeine Geschäftsbedingungen</h2>
+                    <div class="agb-content">
+                        <h3>1. Vertragsgegenstand und Anbieterinformation</h3>
+                        <p>Der Augustus-Client (im Folgenden als "Software" bezeichnet) ist ein Produkt von Esound,
+                            (im Folgenden als "Anbieter" bezeichnet). Der
+                            Anbieter ist Einzelunternehmer im Sinne des österreichischen Rechts und fällt unter die
+                            Kleinunternehmerregelung gemäß § 6 Abs. 1 Z 27 UStG. Durch die Installation oder Verwendung
+                            der Software erklärt der Benutzer (im Folgenden als "Kunde" bezeichnet) seine ausdrückliche
+                            Zustimmung zu diesen allgemeinen Geschäftsbedingungen (AGB). Der Vertrag wird ausschließlich
+                            mit Kunden geschlossen, die ihren Wohnsitz oder gewöhnlichen Aufenthalt (bei Verbrauchern)
+                            bzw. ihren Sitz oder ihre Niederlassung (bei Unternehmern) in Österreich haben. Sollten
+                            einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der
+                            übrigen Bestimmungen unberührt. An die Stelle der unwirksamen Bestimmung tritt eine wirksame
+                            Bestimmung, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
+
+                        <h3>2. Nutzungsrechte</h3>
+                        <p>Nach Erhalt eines Lizenzschlüssels erhält der Kunde das nicht-exklusive, nicht übertragbare
+                            und zeitlich auf die vereinbarte Vertragsdauer beschränkte Recht, die Software auf einem
+                            einzigen Gerät zur gleichen Zeit zu nutzen. Das Gerät muss im Besitz des Kunden sein.
+                            Eine Vervielfältigung, Verbreitung oder
+                            anderweitige Zugänglichmachung der Software an Dritte ist nicht gestattet. Die Übertragung
+                            des Lizenzschlüssels an Dritte ist untersagt und führt zum Verlust der Nutzungsrechte sowie
+                            zur sofortigen Beendigung des Vertrags ohne Anspruch auf Rückerstattung. Die Nutzung der
+                            Software ist ausschließlich Kunden mit Wohnsitz oder Sitz in Österreich gestattet.</p>
+
+                        <h3>3. Räumlicher Geltungsbereich und Nutzungsbeschränkungen</h3>
+                        <p>Das Angebot des Anbieters richtet sich ausschließlich an Kunden mit Wohnsitz oder
+                            gewöhnlichem Aufenthalt (bei Verbrauchern) bzw. Sitz oder Niederlassung (bei Unternehmern)
+                            in Österreich. Diese Beschränkung des Vertragsabschlusses auf Kunden mit Wohnsitz/Sitz in
+                            Österreich erfolgt aufgrund der Anwendung der österreichischen Kleinunternehmerregelung
+                            gemäß § 6 Abs. 1 Z 27 UStG. Nach dieser Regelung besteht eine Befreiung von der
+                            Umsatzsteuerpflicht für Umsätze innerhalb Österreichs. Der Kunde versichert
+                            bei Vertragsabschluss, dass er die Voraussetzung eines österreichischen Wohnsitzes bzw.
+                            Sitzes erfüllt. Eine Nutzung der Software außerhalb Österreichs ist nicht gestattet. Der
+                            Anbieter behält sich vor, bei Bekanntwerden eines Verstoßes gegen diese Bestimmung den
+                            Vertrag fristlos zu kündigen und den Zugang zur Software zu deaktivieren, ohne dass dem
+                            Kunden ein Anspruch auf Rückerstattung bereits bezahlter Entgelte zusteht.</p>
+
+                        <h3>4. Kontoerstellung und Datenschutz</h3>
+                        <p>Der Kunde ist verpflichtet, sich vor der Nutzung der Software für ein Konto zu registrieren.
+                            Die bei der Registrierung angegebenen Daten müssen wahrheitsgemäß sein. Die Übertragung des
+                            Kontos an Dritte ist untersagt und führt zum Verlust der Nutzungsrechte sowie zur sofortigen
+                            Beendigung des Vertrags. Der Anbieter verarbeitet personenbezogene Daten des Kunden gemäß
+                            den Bestimmungen der Datenschutz-Grundverordnung (DSGVO). Nähere Informationen zum
+                            Datenschutz können beim Anbieter angefragt werden.</p>
+
+                        <h3>5. Haftungsbeschränkung</h3>
+                        <p>Die Haftung des Anbieters für leicht fahrlässig verursachte Schäden ist ausgeschlossen, außer
+                            bei Verletzung von Vertragspflichten, deren Erfüllung die ordnungsgemäße Durchführung des
+                            Vertrages überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertrauen
+                            darf (Kardinalpflichten). Bei Verletzung von Kardinalpflichten ist die Haftung auf typische
+                            und vorhersehbare Schäden begrenzt. Für Vorsatz und grobe Fahrlässigkeit sowie für
+                            Personenschäden haftet der Anbieter unbeschränkt. Dem Kunden wird empfohlen, regelmäßig
+                            Datensicherungen durchzuführen.</p>
+
+                        <h3>6. Anwendbares Recht und Gerichtsstand</h3>
+                        <p>Es gilt österreichisches Recht unter Ausschluss des UN-Kaufrechts. Für Verbraucher im Sinne
+                            des Konsumentenschutzgesetzes (KSchG) gelten die gesetzlichen Gerichtsstände. Für
+                            Unternehmer wird als ausschließlicher Gerichtsstand das zuständige Gericht am Wohnsitz des
+                            Anbieters vereinbart. Hat der Kunde als Verbraucher seinen Wohnsitz oder
+                            gewöhnlichen Aufenthalt in Österreich, so können Klagen gegen ihn ausschließlich am Gericht
+                            des Wohnsitzes, des gewöhnlichen Aufenthalts oder des Ortes der Beschäftigung erhoben
+                            werden.</p>
+
+                        <h3>7. Änderung der AGB</h3>
+                        <p>Der Anbieter behält sich das Recht vor, diese AGB zu ändern, soweit dies dem Kunden zumutbar
+                            ist. Änderungen der AGB werden dem Kunden mindestens 30 Tage vor ihrem Inkrafttreten
+                            schriftlich oder per E-Mail sowie im Discord-Kanal des Käufers mitgeteilt. Widerspricht der
+                            Kunde den geänderten AGB nicht innerhalb von 30 Tagen nach Erhalt der Mitteilung, gelten die
+                            geänderten AGB als angenommen. Der Anbieter wird den Kunden in der Mitteilung auf die
+                            Bedeutung dieser Frist und die Folgen des Schweigens gesondert hinweisen. Im Falle eines
+                            Widerspruchs endet der Vertrag zum Zeitpunkt des Inkrafttretens der geänderten AGB.</p>
+
+                        <h3>8. Kündigung</h3>
+                        <p>Das Nutzungsrecht kann von beiden Parteien schriftlich oder per E-Mail gekündigt werden. Eine
+                            außerordentliche Kündigung aus
+                            wichtigem Grund bleibt hiervon unberührt. Ein wichtiger Grund liegt insbesondere vor, wenn
+                            der Kunde gegen wesentliche Bestimmungen dieser AGB verstößt oder wenn festgestellt wird,
+                            dass der Kunde keinen Wohnsitz oder Sitz in Österreich hat. Bei Kündigung durch den Kunden
+                            besteht kein Anspruch auf Rückerstattung bereits gezahlter Entgelte. Bei Kündigung durch den
+                            Anbieter wird der Zugang des Kunden zur Software mit Wirksamwerden der Kündigung
+                            deaktiviert.</p>
+
+                        <h3>9. Support</h3>
+                        <p>Der Anbieter stellt Kundensupport für die Software über <a
+                                href="https://discord.electriclauncher.de" target="_blank">Discord</a>
+                            zur Verfügung. Der Anbieter bemüht sich, Anfragen innerhalb angemessener
+                            Frist zu beantworten, übernimmt jedoch keine Garantie für bestimmte Reaktionszeiten oder die
+                            Behebung von Problemen.</p>
+
+                        <h3>10. Updates und Upgrades</h3>
+                        <p>Der Anbieter behält sich das Recht vor, Updates und Upgrades für die Software zu
+                            veröffentlichen. Der Kunde erkennt an, dass solche Updates für das ordnungsgemäße
+                            Funktionieren der Software erforderlich sein können und verpflichtet sich, diese zu
+                            installieren, sobald sie verfügbar sind. Updates zur Behebung von Sicherheitslücken oder
+                            Funktionsfehlern sind für den Kunden kostenfrei. Für Upgrades mit wesentlichen
+                            Funktionserweiterungen kann der Anbieter ein zusätzliches Entgelt verlangen.</p>
+
+                        <h3>11. Geistiges Eigentum</h3>
+                        <p>Der Kunde erkennt an, dass die Software durch Urheberrechte und andere geistige
+                            Eigentumsrechte geschützt ist und dass der Anbieter alle Rechte, Titel und Ansprüche an der
+                            Software behält. Eine Dekompilierung oder Disassemblierung der Software ist unzulässig.</p>
+
+                        <h3>12. Einhaltung von Gesetzen</h3>
+                        <p>Der Kunde verpflichtet sich, die Software in Übereinstimmung mit allen anwendbaren Gesetzen
+                            zu verwenden, einschließlich, aber nicht beschränkt auf Datenschutzgesetze und
+                            Verbraucherschutzgesetze. Es ist ausdrücklich untersagt, DRM-/Kopierschutzmechanismen zu
+                            umgehen, die EULA/Markenrichtlinien von Mojang/Microsoft
+                            zu verletzen oder die Software in Umgebungen einzusetzen, die Modifikationen nicht erlauben.
+                            Bei Verstößen behalten wir
+                            uns die sofortige Kündigung der Lizenz vor.</p>
+
+                        <h3>13. Übertragung</h3>
+                        <p>Eine Übertragung der Rechte und Pflichten aus diesem Vertrag durch den Kunden bedarf der
+                            vorherigen schriftlichen Zustimmung des Anbieters.</p>
+
+                        <h3>14. Datenverarbeitung</h3>
+                        <p>Der Kunde stimmt zu, dass der Augustus-Client hardwarebezogene Daten des genutzten Geräts
+                            sowie spielbezogene Daten erfassen und verarbeiten darf, soweit dies für die Erbringung der
+                            vertragsgegenständlichen Leistungen erforderlich ist. Dazu gehören unter anderem
+                            Informationen über die Gerätekonfiguration, Betriebssystemdetails und andere technische
+                            Daten. Diese Daten werden ausschließlich für die korrekte Funktion der Software, die
+                            Erkennung technischer Probleme und die Verbesserung der Benutzererfahrung verwendet. Die
+                            Daten werden für die Dauer des Vertragsverhältnisses gespeichert. Dem Kunden stehen die
+                            Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit sowie
+                            Widerspruch gegen die Verarbeitung zu. Für Fragen zum Datenschutz wenden Sie sich bitte an
+                            den Anbieter.</p>
+
+                        <h3>15. Preise und Zahlungsbedingungen</h3>
+                        <p>Alle angegebenen Preise sind Endpreise gemäß Kleinunternehmerregelung nach § 6 Abs. 1 Z 27
+                            UStG. Es wird keine Umsatzsteuer ausgewiesen. Zahlungen sind im Voraus zu leisten und werden
+                            über Stripe (Kartenzahlung), Paypal oder Cryptowährungen abgewickelt.</p>
+
+                        <h3>16. Widerrufsrecht für Verbraucher</h3>
+                        <p>Verbraucher haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu
+                            widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses. Um
+                            das Widerrufsrecht auszuüben, muss der Verbraucher den Anbieter mittels einer eindeutigen
+                            Erklärung (z.B. ein mit der Post versandter Brief oder E-Mail) über seinen Entschluss,
+                            diesen Vertrag zu widerrufen, informieren. Zur Wahrung der
+                            Widerrufsfrist reicht es aus, dass der Verbraucher die Mitteilung über die Ausübung des
+                            Widerrufsrechts vor Ablauf der Widerrufsfrist absendet.</p>
+                        <p>Das Widerrufsrecht erlischt vorzeitig bei Verträgen zur Lieferung von digitalen Inhalten,
+                            wenn der Verbraucher ausdrücklich zugestimmt hat, dass mit der Ausführung des Vertrags vor
+                            Ablauf der Widerrufsfrist begonnen werden soll, und seine Kenntnis davon bestätigt hat, dass
+                            er durch seine Zustimmung mit Beginn der Ausführung des Vertrags sein Widerrufsrecht
+                            verliert.</p>
+
+                        <h3>17. Alternative Streitbeilegung</h3>
+                        <p>Der Anbieter ist bereit, an Streitbeilegungsverfahren bei einer Verbraucherschlichtungsstelle
+                            teilzunehmen. Für Verbraucher besteht zudem die Möglichkeit, Beschwerden an die
+                            Online-Streitbeilegungsplattform der EU zu richten: <a href="http://ec.europa.eu/odr"
+                                target="_blank">http://ec.europa.eu/odr</a>.</p>
+
+                        <h3>18. Salvatorische Klausel</h3>
+                        <p>Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam sein oder werden,
+                            berührt dies nicht die Gültigkeit der übrigen Bestimmungen. Anstelle der unwirksamen
+                            Bestimmung tritt eine wirksame Regelung, die dem wirtschaftlichen Zweck der unwirksamen
+                            Bestimmung möglichst nahe kommt.</p>
+
+                        <h3>19. Gesamte Vereinbarung</h3>
+                        <p>Diese AGB stellen die gesamte Vereinbarung zwischen dem Kunden und dem Anbieter hinsichtlich
+                            der Nutzung der Software dar und ersetzen alle vorherigen mündlichen oder schriftlichen
+                            Vereinbarungen.</p>
+
+                        <p><strong>Stand: 01.08.2025</strong></p>
+                    </div>
+                </div>
+
+                <div class="impressum-card" style="animation-delay: 0.9s;">
+                    <h2><i>🔐</i> Online-Streitbeilegung</h2>
+                    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie
+                        unter <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage"
+                            target="_blank">https://ec.europa.eu/consumers/odr/</a> finden.</p>
+                    <p>Wir sind bereit, an Streitbeilegungsverfahren bei einer Verbraucherschlichtungsstelle
+                        teilzunehmen.</p>
+                </div>
+            </div>
+
+            <div class="language-content" id="content-en">
+                <div class="impressum-card">
+                    <h2><i>⚖️</i> General Terms and Conditions</h2>
+                    <div class="agb-content">
+                        <h3>1. Subject of Contract and Provider Information</h3>
+                        <p>The Augustus Client (hereinafter referred to as "Software") is a product of Esound,
+                            (hereinafter referred to as "Provider"). The
+                            Provider is a sole proprietor under Austrian law and falls under the small business
+                            regulation according to § 6 para. 1 Z 27 of the Austrian Value Added Tax Act. By installing
+                            or using the Software, the user (hereinafter referred to as "Customer") expressly agrees to
+                            these General Terms and Conditions (GTC). The contract is exclusively concluded with
+                            customers who have their residence or habitual abode (for consumers) or their registered
+                            office or branch (for businesses) in Austria. Should individual provisions of these GTC be
+                            or become invalid, the validity of the remaining provisions shall remain unaffected. The
+                            invalid provision shall be replaced by a valid provision that comes closest to the economic
+                            purpose of the invalid provision.</p>
+
+                        <h3>2. Usage Rights</h3>
+                        <p>After receiving a license key, the Customer obtains the non-exclusive, non-transferable
+                            right, limited to the agreed contract duration, to use the Software on a single device at
+                            any given time. The Customer has to own the device.
+                            Reproduction, distribution, or otherwise making the Software accessible to
+                            third parties is not permitted. The transfer of the license key to third parties is
+                            prohibited and leads to the loss of usage rights as well as immediate termination of the
+                            contract without entitlement to a refund. The use of the Software is exclusively permitted
+                            for customers with residence or registered office in Austria.</p>
+
+                        <h3>3. Territorial Scope and Usage Restrictions</h3>
+                        <p>The Provider's offer is exclusively directed at customers with residence or habitual abode
+                            (for consumers) or registered office or branch (for businesses) in Austria. This restriction
+                            of contract conclusion to customers with residence/registered office in Austria is due to
+                            the application of the Austrian small business regulation according to § 6 para. 1 Z 27 of
+                            the Austrian Value Added Tax Act.
+                            The Customer assures at the conclusion of the contract that they meet the requirement of
+                            having an Austrian residence or registered office. Use of the Software outside Austria is
+                            not permitted. The Provider reserves the right, upon becoming aware of a violation of this
+                            provision, to terminate the contract without notice and deactivate access to the Software,
+                            without the Customer being entitled to a refund of fees already paid.</p>
+
+                        <h3>4. Account Creation and Data Protection</h3>
+                        <p>The Customer is obligated to register for an account before using the Software. The
+                            information provided during registration must be truthful. The transfer of the
+                            account to third parties is prohibited and leads to the loss of usage rights as well as
+                            immediate termination of the contract. The Provider processes personal data of the Customer
+                            in accordance with the provisions of the General Data Protection Regulation (GDPR). Further
+                            information on data protection can be requested from the Provider.</p>
+
+                        <h3>5. Limitation of Liability</h3>
+                        <p>The Provider's liability for damages caused by slight negligence is excluded, except in case
+                            of breach of contractual obligations whose fulfillment is essential for the proper execution
+                            of the contract and on whose compliance the Customer may regularly rely (cardinal
+                            obligations). In case of breach of cardinal obligations, liability is limited to typical and
+                            foreseeable damages. The Provider is fully liable for intent and gross negligence as well as
+                            for personal injury. The Customer is advised to regularly back up data.</p>
+
+                        <h3>6. Applicable Law and Jurisdiction</h3>
+                        <p>Austrian law applies, excluding the UN Convention on Contracts for the International Sale of
+                            Goods. For consumers within the meaning of the Consumer Protection Act (KSchG), the
+                            statutory jurisdictions apply. If the
+                            Customer as a consumer has their residence or habitual abode in Austria, lawsuits against
+                            them can only be filed at the court of the residence, the habitual abode, or the place of
+                            employment.</p>
+
+                        <h3>7. Changes to the Terms and Conditions</h3>
+                        <p>The Provider reserves the right to change these GTC, as far as this is reasonable for the
+                            Customer. Changes to the GTC will be communicated to the Customer at least 30 days before
+                            they come into effect in writing or by email as well as in the Customer's Discord channel.
+                            If the Customer does not object to the changed GTC within 30 days after receipt of the
+                            notification, the changed GTC are deemed accepted. The Provider will separately inform the
+                            Customer in the notification about the significance of this deadline and the consequences of
+                            silence. In case of an objection, the contract ends at the time when the changed GTC would
+                            come into effect.</p>
+
+                        <h3>8. Termination</h3>
+                        <p>The right of use can be terminated by either party in writing or by email. An extraordinary
+                            termination for good cause remains
+                            unaffected by this. Good cause exists in particular if the Customer violates essential
+                            provisions of these GTC or if it is determined that the Customer does not have a residence
+                            or registered office in Austria. In case of termination by the Customer, there is no
+                            entitlement to a refund of fees already paid. In case of termination by the Provider, the
+                            Customer's access to the Software will be deactivated when the termination becomes
+                            effective.</p>
+
+                        <h3>9. Support</h3>
+                        <p>The Provider offers customer support for the Software via <a
+                                href="https://discord.electriclauncher.de" target="_blank">Discord</a>.
+                            The Provider strives to respond to inquiries within a
+                            reasonable time but does not guarantee specific response times or problem resolution.</p>
+
+                        <h3>10. Updates and Upgrades</h3>
+                        <p>The Provider reserves the right to publish updates and upgrades for the Software. The
+                            Customer acknowledges that such updates may be necessary for the proper functioning of the
+                            Software and agrees to install them as soon as they are available. Updates to fix security
+                            vulnerabilities or functional errors are free of charge for the Customer. For upgrades with
+                            significant functional enhancements, the Provider may charge an additional fee.</p>
+
+                        <h3>11. Intellectual Property</h3>
+                        <p>The Customer acknowledges that the Software is protected by copyright and other intellectual
+                            property rights and that the Provider retains all rights, titles, and claims to the
+                            Software. Decompilation or disassembly of the Software is not allowed.</p>
+
+                        <h3>12. Compliance with Laws</h3>
+                        <p>The Customer agrees to use the Software in compliance with all applicable laws, including but
+                            not limited to data protection laws and consumer protection laws. It is expressly prohibited
+                            to circumvent DRM/copy protection mechanisms, violate the EULA/trademark guidelines of
+                            Mojang/Microsoft, or use the software in environments that do not allow modifications. In
+                            the event of violations, we
+                            reserve the right to terminate the license immediately.</p>
+
+                        <h3>13. Transfer</h3>
+                        <p>A transfer of the rights and obligations from this contract by the Customer requires the
+                            prior written consent of the Provider.</p>
+
+                        <h3>14. Data Processing</h3>
+                        <p>The Customer agrees that the Augustus Client may collect and process hardware-related data of
+                            the device used as well as game-related data, insofar as this is necessary for the provision
+                            of the contractual services. This includes, among other things, information about the device
+                            configuration, operating system details, and other technical data. This data is used
+                            exclusively for the correct functioning of the Software, the detection of technical
+                            problems, and the improvement of the user experience. The data is stored for the duration of
+                            the contractual relationship. The Customer has the rights to information, correction,
+                            deletion, restriction, data portability, and objection to the processing. For questions
+                            regarding data protection, please contact the provider.</p>
+
+                        <h3>15. Prices and Payment Terms</h3>
+                        <p>All prices quoted are final prices in accordance with the small business regulation under § 6
+                            para. 1 Z 27 of the Austrian Value Added Tax Act. No value-added tax is shown. Payments are
+                            to be made in advance and are processed via Stripe (card payment), Paypal or crypto
+                            currencies.</p>
+
+                        <h3>16. Right of Withdrawal for Consumers</h3>
+                        <p>Consumers have the right to withdraw from this contract within fourteen days without giving
+                            any reason. The withdrawal period is fourteen days from the day of the conclusion of the
+                            contract. To exercise the right of withdrawal, the consumer must inform the Provider by
+                            means of a clear statement (e.g., a letter sent by post or email) of their decision to
+                            withdraw from this contract. To meet the withdrawal deadline, it is sufficient for the
+                            consumer
+                            to send the communication concerning the exercise of the right of withdrawal before the
+                            withdrawal period has expired.</p>
+                        <p>The right of withdrawal expires prematurely for contracts for the supply of digital content
+                            if the consumer has expressly consented to the performance of the contract beginning before
+                            the expiry of the withdrawal period, and has confirmed their knowledge that by their
+                            consent, they lose their right of withdrawal with the beginning of the performance of the
+                            contract.</p>
+
+                        <h3>17. Alternative Dispute Resolution</h3>
+                        <p>The Provider is willing to participate in dispute resolution proceedings at a consumer
+                            arbitration body. For consumers, there is also the possibility to address complaints to the
+                            EU's Online Dispute Resolution platform: <a href="http://ec.europa.eu/odr"
+                                target="_blank">http://ec.europa.eu/odr</a>.</p>
+
+                        <h3>18. Severability Clause</h3>
+                        <p>Should individual provisions of these GTC be or become wholly or partially invalid, this
+                            shall not affect the validity of the remaining provisions. In place of the invalid
+                            provision, a valid regulation shall apply that comes as close as possible to the economic
+                            purpose of the invalid provision.</p>
+
+                        <h3>19. Entire Agreement</h3>
+                        <p>These GTC constitute the entire agreement between the Customer and the Provider regarding the
+                            use of the Software and replace all previous oral or written agreements.</p>
+
+                        <p><strong>Date: 01.08.2025</strong></p>
+                    </div>
+                </div>
+
+                <div class="impressum-card" style="animation-delay: 0.9s;">
+                    <h2><i>🔐</i> Online Dispute Resolution</h2>
+                    <p>The European Commission provides a platform for online dispute resolution (ODR), which you can
+                        find at <a
+                            href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage"
+                            target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                    <p>We are willing to participate in dispute resolution proceedings at a consumer arbitration body.
+                    </p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6" />
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Augustus Client. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            document.getElementById('loader').classList.add('hidden');
+        });
+
+        // Language toggle functionality
+        const languageBtns = document.querySelectorAll('.language-btn');
+        const languageContents = document.querySelectorAll('.language-content');
+
+        languageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+
+                // Update button active state
+                languageBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Show corresponding content
+                languageContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `content-${lang}`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Network animation function
+        function createNetworkAnimation(canvas) {
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const particleCount = 50;
+            const connectionDistance = 150;
+            const animationSpeed = 0.3;
+
+            // Set canvas size
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * animationSpeed,
+                    vy: (Math.random() - 0.5) * animationSpeed,
+                    radius: Math.random() * 2 + 1,
+                    color: `rgba(${Math.random() * 30 + 30}, ${Math.random() * 100 + 120}, ${Math.random() * 50 + 200}, ${Math.random() * 0.2 + 0.1})`
+                });
+            }
+
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Update and draw particles
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    // Bounce off edges
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+
+                    // Draw particle
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+
+                    // Connect particles
+                    particles.forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < connectionDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(particle.x, particle.y);
+                            ctx.lineTo(otherParticle.x, otherParticle.y);
+                            ctx.strokeStyle = `rgba(59, 130, 246, ${0.05 * (1 - distance / connectionDistance)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    });
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Initialize network animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const networkAnimation = document.querySelector('.network-animation');
+            if (networkAnimation) {
+                createNetworkAnimation(networkAnimation);
+            }
+        });
+
+        // Parallax effect for section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const section = document.querySelector('.impressum-section');
+            if (section && scrolled < window.innerHeight) {
+                section.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+</body>
+
+</html>
